@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#8065e9">
+<title>CompuMundo | Aprende Computación</title>
+
+<style>
+:root {
+    --lila: #8065e9;
+    --lila-claro: #eeeaff;
+    --azul: #61c4ec;
+    --azul-claro: #e8f8ff;
+    --turquesa: #57cbb8;
+    --amarillo: #ffdc75;
+    --fondo: #f5f5ff;
+    --texto: #30304e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+button {
+    font-family: inherit;
+}
+
+.aplicacion {
+    max-width: 430px;
+    min-height: 100vh;
+    margin: auto;
+    background: white;
+    padding-bottom: 90px;
+    position: relative;
+}
+
+/* ENCABEZADO */
+
+.encabezado {
+    background: linear-gradient(135deg, #8065e9, #59bde9);
+    color: white;
+    padding: 25px 21px 22px;
+    border-radius: 0 0 28px 28px;
+}
+
+.marca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.etiqueta {
+    background: #ffffff35;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.encabezado h1 {
+    font-size: 27px;
+    margin-top: 25px;
+}
+
+.encabezado p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 7px;
+}
+
+.imagen-principal {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-top: 18px;
+    background: #d9d3ff;
+}
+
+/* CONTENIDO */
+
+.contenido {
+    padding: 20px;
+}
+
+.pantalla {
+    display: none;
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+.titulo-seccion {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.subtitulo {
+    color: #77778e;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 17px;
+}
+
+.bienvenida {
+    padding: 17px;
+    border-radius: 18px;
+    background: var(--lila-claro);
+    margin-bottom: 22px;
+}
+
+.bienvenida h2 {
+    font-size: 19px;
+}
+
+.bienvenida p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 8px;
+}
+
+.boton-principal {
+    background: linear-gradient(120deg, var(--lila), var(--azul));
+    border: none;
+    color: white;
+    padding: 13px 18px;
+    border-radius: 13px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 13px;
+}
+
+.boton-principal:active {
+    transform: scale(.97);
+}
+
+/* TARJETAS */
+
+.cuadricula {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+.tarjeta {
+    background: #f8f6ff;
+    border: 1px solid #e9e3ff;
+    border-radius: 17px;
+    padding: 11px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.tarjeta:active {
+    transform: scale(.97);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #e8e5f9;
+}
+
+.tarjeta h3 {
+    color: #7359d0;
+    font-size: 14px;
+    margin-top: 9px;
+}
+
+.tarjeta p {
+    font-size: 11px;
+    color: #72728b;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.tarjeta-icono {
+    font-size: 35px;
+    background: #e9e4ff;
+    border-radius: 13px;
+    text-align: center;
+    padding: 14px 0;
+}
+
+/* INFORMACIÓN */
+
+.informacion {
+    background: var(--azul-claro);
+    border-radius: 17px;
+    padding: 16px;
+    margin-top: 17px;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.detalle {
+    background: #f6f3ff;
+    padding: 17px;
+    border-radius: 19px;
+    margin-top: 18px;
+    display: none;
+}
+
+.detalle img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 13px;
+}
+
+.detalle h3 {
+    color: #7559d6;
+    margin-bottom: 9px;
+}
+
+.detalle p {
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* CLASIFICACIÓN */
+
+.bloque {
+    border-radius: 17px;
+    padding: 17px;
+    margin-bottom: 13px;
+    line-height: 1.7;
+}
+
+.bloque h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.bloque p {
+    font-size: 13px;
+}
+
+.entrada { background: #eeeaff; }
+.salida { background: #e5f7ff; }
+.almacenamiento { background: #e5faf4; }
+.procesamiento { background: #fff5dc; }
+
+/* EVALUACIÓN */
+
+.caja-evaluacion {
+    background: #f5f2ff;
+    padding: 17px;
+    border-radius: 18px;
+}
+
+.progreso-fondo {
+    width: 100%;
+    height: 9px;
+    background: #dfd9ef;
+    border-radius: 20px;
+    margin: 13px 0;
+}
+
+.progreso {
+    width: 0%;
+    height: 9px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--lila), var(--azul));
+    transition: .3s;
+}
+
+.numero-pregunta {
+    font-size: 12px;
+    color: #777;
+}
+
+.pregunta {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 17px 0;
+}
+
+.opcion {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 1px solid #ded7f5;
+    background: white;
+    color: var(--texto);
+    border-radius: 12px;
+    padding: 13px;
+    margin: 9px 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.opcion:disabled {
+    opacity: 1;
+}
+
+.opcion.correcta {
+    background: #e0f8eb;
+    border: 2px solid #46b987;
+}
+
+.opcion.incorrecta {
+    background: #ffe9e9;
+    border: 2px solid #e77d7d;
+}
+
+#mensaje {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 13px;
+    line-height: 1.5;
+}
+
+.resultado {
+    display: none;
+    text-align: center;
+    background: #eeeaff;
+    padding: 22px;
+    border-radius: 19px;
+    margin-top: 17px;
+}
+
+.resultado .trofeo {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.resultado p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+/* NAVEGACIÓN */
+
+.navegacion {
+    position: fixed;
+    width: 100%;
+    max-width: 430px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 4px;
+    border-top: 1px solid #eeeafa;
+    box-shadow: 0 -4px 15px #ddd9ed;
+    z-index: 10;
+}
+
+.nav-boton {
+    border: none;
+    background: transparent;
+    color: #89879e;
+    font-size: 10px;
+    cursor: pointer;
+    min-width: 55px;
+}
+
+.nav-boton .icono {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.nav-boton.seleccionado {
+    color: var(--lila);
+    font-weight: bold;
+}
+
+.pie {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    padding: 22px 5px;
+}
+
+@media (min-width: 600px) {
+    body {
+        padding: 20px 0;
+    }
+
+    .aplicacion {
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 5px 30px #d6d1e9;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="aplicacion">
+
+<!-- ENCABEZADO -->
+
+<header class="encabezado">
+    <div class="marca">
+        <div class="logo">💻 CompuMundo</div>
+        <div class="etiqueta">📚 Aprende jugando</div>
+    </div>
+
+    <h1>¡Hola, estudiante! 👋</h1>
+
+    <p>
+        Descubre el maravilloso mundo de la computadora.
+        Aprende sus partes y conoce para qué sirve cada una.
+    </p>
+
+    <img
+    class="imagen-principal"
+    src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800"
+    alt="Computadora de escritorio">
+</header>
+
+<main class="contenido">
+
+<!-- PANTALLA DE INICIO -->
+
+<section id="inicio" class="pantalla activa">
+
+    <div class="bienvenida">
+        <h2>🌟 ¡Bienvenido a CompuMundo!</h2>
+
+        <p>
+            En esta aplicación aprenderás a reconocer
+            las partes de una computadora, sus funciones
+            y la importancia de cada componente.
+        </p>
+
+        <button class="boton-principal"
+        onclick="cambiarPantalla('aprender')">
+            ¡Comenzar a aprender! →
+        </button>
+    </div>
+
+    <h2 class="titulo-seccion">¿Qué aprenderás?</h2>
+
+    <div class="cuadricula">
+
+        <div class="tarjeta" onclick="cambiarPantalla('aprender')">
+            <div class="tarjeta-icono">🖥️</div>
+            <h3>Partes de la PC</h3>
+            <p>Conoce sus componentes externos e internos.</p>
+        </div>
+
+        <div class="tarjeta" onclick="cambiarPantalla('clasificacion')">
+            <div class="tarjeta-icono">⚙️</div>
+            <h3>Clasificación</h3>
+            <p>Aprende los tipos de dispositivos.</p>
+        </div>
+
+        <div class="tarjeta" onclick="cambiarPantalla('quiz')">
+            <div class="tarjeta-icono">🏆</div>
+            <h3>Evaluación</h3>
+            <p>Comprueba tus conocimientos.</p>
+        </div>
+
+        <div class="tarjeta" onclick="cambiarPantalla('aprender')">
+            <div class="tarjeta-icono">📚</div>
+            <h3>Aprendizaje</h3>
+            <p>Estudia con imágenes y explicaciones.</p>
+        </div>
+
+    </div>
+
+    <div class="informacion">
+        💡 <b>¿Sabías que...?</b><br>
+        Las partes físicas de una computadora
+        reciben el nombre de hardware.
+    </div>
+
+</section>
+
+<!-- PANTALLA DE APRENDIZAJE -->
+
+<section id="aprender" class="pantalla">
+
+    <h2 class="titulo-seccion">🖥️ Partes de la computadora</h2>
+
+    <p class="subtitulo">
+        Selecciona cada componente para descubrir
+        su nombre, características y función.
+    </p>
+
+    <div class="cuadricula">
+
+        <div class="tarjeta" onclick="mostrarDetalle('monitor')">
+            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500" alt="Monitor">
+            <h3>🖥️ Monitor</h3>
+            <p>Dispositivo de salida.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('teclado')">
+            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500" alt="Teclado">
+            <h3>⌨️ Teclado</h3>
+            <p>Dispositivo de entrada.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('mouse')">
+            <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=500" alt="Mouse">
+            <h3>🖱️ Mouse</h3>
+            <p>Dispositivo de entrada.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('procesador')">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500" alt="Procesador">
+            <h3>⚙️ Procesador</h3>
+            <p>Ejecuta instrucciones.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('ram')">
+            <img src="https://images.unsplash.com/photo-1562976540-1502c2145186?w=500" alt="Memoria RAM">
+            <h3>🧩 Memoria RAM</h3>
+            <p>Memoria temporal.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('disco')">
+            <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500" alt="Disco de almacenamiento">
+            <h3>💾 Disco SSD</h3>
+            <p>Almacena información.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('placa')">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500" alt="Placa electrónica">
+            <h3>🔌 Placa madre</h3>
+            <p>Conecta los componentes.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('impresora')">
+            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=500" alt="Impresora">
+            <h3>🖨️ Impresora</h3>
+            <p>Permite imprimir documentos.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('parlantes')">
+            <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500" alt="Parlantes">
+            <h3>🔊 Parlantes</h3>
+            <p>Reproducen sonidos.</p>
+        </div>
+
+        <div class="tarjeta" onclick="mostrarDetalle('microfono')">
+            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=500" alt="Micrófono">
+            <h3>🎤 Micrófono</h3>
+            <p>Captura sonidos.</p>
+        </div>
+
+    </div>
+
+    <div class="detalle" id="detalle">
+        <img id="imagenDetalle" src="" alt="Componente seleccionado">
+        <h3 id="nombreDetalle"></h3>
+        <p id="descripcionDetalle"></p>
+        <button class="boton-principal" onclick="cerrarDetalle()">
+            Cerrar información
+        </button>
+    </div>
+
+</section>
+
+<!-- PANTALLA DE CLASIFICACIÓN -->
+
+<section id="clasificacion" class="pantalla">
+
+    <h2 class="titulo-seccion">📚 Tipos de dispositivos</h2>
+
+    <p class="subtitulo">
+        Los dispositivos se clasifican según la función
+        que realizan dentro de la computadora.
+    </p>
+
+    <div class="bloque entrada">
+        <h3>🟣 1. Dispositivos de entrada</h3>
+        <p>
+            Permiten ingresar datos e instrucciones
+            a la computadora.
+            <br><b>Ejemplos:</b> teclado, mouse,
+            micrófono y escáner.
+        </p>
+    </div>
+
+    <div class="bloque salida">
+        <h3>🔵 2. Dispositivos de salida</h3>
+        <p>
+            Muestran o reproducen la información
+            procesada por la computadora.
+            <br><b>Ejemplos:</b> monitor, impresora
+            y parlantes.
+        </p>
+    </div>
+
+    <div class="bloque almacenamiento">
+        <h3>🟢 3. Dispositivos de almacenamiento</h3>
+        <p>
+            Permiten guardar información y archivos
+            para utilizarlos posteriormente.
+            <br><b>Ejemplos:</b> disco duro, SSD
+            y memoria USB.
+        </p>
+    </div>
+
+    <div class="bloque procesamiento">
+        <h3>🟠 4. Dispositivos de procesamiento</h3>
+        <p>
+            Se encargan de ejecutar instrucciones
+            y realizar operaciones.
+            <br><b>Ejemplo:</b> procesador (CPU).
+        </p>
+    </div>
+
+    <div class="informacion">
+        ⭐ Recuerda: cada componente cumple
+        una función importante y todos trabajan
+        en conjunto para que la computadora funcione.
+    </div>
+
+</section>
+
+<!-- PANTALLA DE EVALUACIÓN -->
+
+<section id="quiz" class="pantalla">
+
+    <h2 class="titulo-seccion">🏆 Pon a prueba tus conocimientos</h2>
+
+    <p class="subtitulo">
+        Responde las siguientes preguntas y descubre
+        cuánto has aprendido.
+    </p>
+
+    <div class="caja-evaluacion" id="cajaEvaluacion">
+
+        <div class="numero-pregunta" id="numeroPregunta">
+            Pregunta 1 de 10
+        </div>
+
+        <div class="progreso-fondo">
+            <div class="progreso" id="barraProgreso"></div>
+        </div>
+
+        <div class="pregunta" id="pregunta"></div>
+
+        <div id="opciones"></div>
+
+        <div id="mensaje"></div>
+
+        <button class="boton-principal"
+        id="botonSiguiente"
+        onclick="siguientePregunta()"
+        style="display:none">
+            Siguiente pregunta →
+        </button>
+
+    </div>
+
+    <div class="resultado" id="resultado">
+        <div class="trofeo">🏆</div>
+
+        <h2>¡Evaluación terminada!</h2>
+
+        <p id="calificacion"></p>
+
+        <button class="boton-principal" onclick="iniciarEvaluacion()">
+            Volver a intentarlo
+        </button>
+    </div>
+
+</section>
+
+</main>
+
+<footer class="pie">
+    💜 CompuMundo © 2026<br>
+    Aprende, descubre y comparte tus conocimientos.
+</footer>
+
+<!-- MENÚ INFERIOR -->
+
+<nav class="navegacion">
+
+    <button class="nav-boton seleccionado"
+    onclick="cambiarPantalla('inicio',this)">
+        <span class="icono">🏠</span>
+        Inicio
+    </button>
+
+    <button class="nav-boton"
+    onclick="cambiarPantalla('aprender',this)">
+        <span class="icono">💻</span>
+        Aprender
+    </button>
+
+    <button class="nav-boton"
+    onclick="cambiarPantalla('clasificacion',this)">
+        <span class="icono">📚</span>
+        Tipos
+    </button>
+
+    <button class="nav-boton"
+    onclick="cambiarPantalla('quiz',this)">
+        <span class="icono">🏆</span>
+        Evaluación
+    </button>
+
+</nav>
+
+</div>
+
+<script>
+
+// CAMBIO DE PANTALLAS
+
+function cambiarPantalla(id, boton) {
+
+    document.querySelectorAll('.pantalla').forEach(p => {
+        p.classList.remove('activa');
+    });
+
+    document.getElementById(id).classList.add('activa');
+
+    document.querySelectorAll('.nav-boton').forEach(b => {
+        b.classList.remove('seleccionado');
+    });
+
+    if (boton) {
+        boton.classList.add('seleccionado');
+    } else {
+        document.querySelectorAll('.nav-boton').forEach(b => {
+            if (b.textContent.includes('Aprender') && id === 'aprender') b.classList.add('seleccionado');
+            if (b.textContent.includes('Tipos') && id === 'clasificacion') b.classList.add('seleccionado');
+            if (b.textContent.includes('Inicio') && id === 'inicio') b.classList.add('seleccionado');
+            if (b.textContent.includes('Evaluación') && id === 'quiz') b.classList.add('seleccionado');
+        });
+    }
+
+    if (id === 'quiz') {
+        iniciarEvaluacion();
+    }
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// INFORMACIÓN DE LOS COMPONENTES
+
+const componentes = {
+
+    monitor: {
+        nombre: "🖥️ Monitor",
+        imagen: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=700",
+        descripcion: "Es un dispositivo de salida que permite visualizar textos, imágenes, videos y toda la información que procesa la computadora."
+    },
+
+    teclado: {
+        nombre: "⌨️ Teclado",
+        imagen: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700",
+        descripcion: "Es un dispositivo de entrada que permite escribir letras, números, símbolos e introducir instrucciones a la computadora."
+    },
+
+    mouse: {
+        nombre: "🖱️ Mouse",
+        imagen: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=700",
+        descripcion: "Es un dispositivo de entrada que permite mover el puntero, seleccionar elementos y realizar diferentes acciones."
+    },
+
+    procesador: {
+        nombre: "⚙️ Procesador (CPU)",
+        imagen: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=700",
+        descripcion: "Es el componente que ejecuta instrucciones y realiza operaciones. Es fundamental para el funcionamiento de la computadora."
+    },
+
+    ram: {
+        nombre: "🧩 Memoria RAM",
+        imagen: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=700",
+        descripcion: "Almacena temporalmente los datos y programas que se están utilizando. Su contenido se pierde cuando se apaga la computadora."
+    },
+
+    disco: {
+        nombre: "💾 Disco SSD",
+        imagen: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=700",
+        descripcion: "Es un dispositivo de almacenamiento que permite guardar documentos, imágenes, programas y otros archivos."
+    },
+
+    placa: {
+        nombre: "🔌 Placa madre",
+        imagen: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700",
+        descripcion: "Es la tarjeta principal donde se conectan los componentes internos y que permite la comunicación entre ellos."
+    },
+
+    impresora: {
+        nombre: "🖨️ Impresora",
+        imagen: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=700",
+        descripcion: "Es un dispositivo de salida que permite imprimir documentos, fotografías y otros archivos en papel."
+    },
+
+    parlantes: {
+        nombre: "🔊 Parlantes",
+        imagen: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=700",
+        descripcion: "Son dispositivos de salida que reproducen sonidos, música, voces y otros contenidos de audio."
+    },
+
+    microfono: {
+        nombre: "🎤 Micrófono",
+        imagen: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=700",
+        descripcion: "Es un dispositivo de entrada que permite captar sonidos y convertirlos en señales que puede procesar la computadora."
+    }
+
+};
+
+// MOSTRAR DETALLES
+
+function mostrarDetalle(nombre) {
+
+    const dato = componentes[nombre];
+
+    document.getElementById('nombreDetalle').textContent = dato.nombre;
+    document.getElementById('imagenDetalle').src = dato.imagen;
+    document.getElementById('descripcionDetalle').textContent = dato.descripcion;
+
+    document.getElementById('detalle').style.display = 'block';
+
+    document.getElementById('detalle').scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+    });
+}
+
+function cerrarDetalle() {
+    document.getElementById('detalle').style.display = 'none';
+}
+
+// PREGUNTAS DE LA EVALUACIÓN
+
+const preguntas = [
+
+    {
+        pregunta: "¿Qué dispositivo permite visualizar la información?",
+        opciones: ["Teclado", "Monitor", "Mouse"],
+        correcta: 1
+    },
+
+    {
+        pregunta: "¿Cuál es un dispositivo de entrada?",
+        opciones: ["Impresora", "Parlantes", "Teclado"],
+        correcta: 2
+    },
+
+    {
+        pregunta: "¿Qué componente ejecuta instrucciones?",
+        opciones: ["Procesador", "Monitor", "Mouse"],
+        correcta: 0
+    },
+
+    {
+        pregunta: "¿Qué memoria almacena datos temporalmente?",
+        opciones: ["Disco SSD", "Memoria RAM", "Memoria USB"],
+        correcta: 1
+    },
+
+    {
+        pregunta: "¿Qué dispositivo permite guardar archivos?",
+        opciones: ["Disco SSD", "Teclado", "Monitor"],
+        correcta: 0
+    },
+
+    {
+        pregunta: "¿Qué componente conecta las partes internas?",
+        opciones: ["Mouse", "Impresora", "Placa madre"],
+        correcta: 2
+    },
+
+    {
+        pregunta: "¿Cuál es un dispositivo de salida?",
+        opciones: ["Micrófono", "Impresora", "Teclado"],
+        correcta: 1
+    },
+
+    {
+        pregunta: "¿Cómo se llaman las partes físicas de una computadora?",
+        opciones: ["Software", "Internet", "Hardware"],
+        correcta: 2
+    },
+
+    {
+        pregunta: "¿Qué dispositivo permite introducir sonidos?",
+        opciones: ["Monitor", "Micrófono", "Parlantes"],
+        correcta: 1
+    },
+
+    {
+        pregunta: "¿Cuál es la función de los parlantes?",
+        opciones: [
+            "Escribir textos",
+            "Almacenar archivos",
+            "Reproducir sonidos"
+        ],
+        correcta: 2
+    }
+
+];
+
+let indice = 0;
+let puntuacion = 0;
+let respondida = false;
+
+// INICIAR EVALUACIÓN
+
+function iniciarEvaluacion() {
+
+    indice = 0;
+    puntuacion = 0;
+
+    document.getElementById('resultado').style.display = 'none';
+    document.getElementById('cajaEvaluacion').style.display = 'block';
+
+    cargarPregunta();
+}
+
+// CARGAR PREGUNTAS
+
+function cargarPregunta() {
+
+    respondida = false;
+
+    const actual = preguntas[indice];
+
+    document.getElementById('numeroPregunta').textContent =
+        `Pregunta ${indice + 1} de ${preguntas.length}`;
+
+    document.getElementById('barraProgreso').style.width =
+        `${(indice / preguntas.length) * 100}%`;
+
+    document.getElementById('pregunta').textContent = actual.pregunta;
+
+    document.getElementById('mensaje').textContent = '';
+
+    document.getElementById('botonSiguiente').style.display = 'none';
+
+    const contenedor = document.getElementById('opciones');
+
+    contenedor.innerHTML = '';
+
+    actual.opciones.forEach((opcion, i) => {
+
+        const boton = document.createElement('button');
+
+        boton.className = 'opcion';
+        boton.textContent = opcion;
+
+        boton.onclick = () => verificarRespuesta(i);
+
+        contenedor.appendChild(boton);
+
+    });
+
+}
+
+// VERIFICAR RESPUESTA
+
+function verificarRespuesta(respuesta) {
+
+    if (respondida) return;
+
+    respondida = true;
+
+    const correcta = preguntas[indice].correcta;
+
+    const opciones = document.querySelectorAll('.opcion');
+
+    opciones.forEach((boton, i) => {
+
+        boton.disabled = true;
+
+        if (i === correcta) {
+            boton.classList.add('correcta');
+        }
+
+        if (i === respuesta && respuesta !== correcta) {
+            boton.classList.add('incorrecta');
+        }
+
+    });
+
+    if (respuesta === correcta) {
+
+        puntuacion++;
+
+        document.getElementById('mensaje').textContent =
+            "✅ ¡Excelente! Tu respuesta es correcta.";
+
+        document.getElementById('mensaje').style.color = "#159b68";
+
+    } else {
+
+        document.getElementById('mensaje').textContent =
+            "❌ Respuesta incorrecta. La opción verde muestra la respuesta correcta.";
+
+        document.getElementById('mensaje').style.color = "#d65e67";
+
+    }
+
+    document.getElementById('botonSiguiente').style.display = 'block';
+
+}
+
+// SIGUIENTE PREGUNTA
+
+function siguientePregunta() {
+
+    indice++;
+
+    if (indice < preguntas.length) {
+
+        cargarPregunta();
+
+    } else {
+
+        finalizarEvaluacion();
+
+    }
+
+}
+
+// RESULTADO FINAL
+
+function finalizarEvaluacion() {
+
+    document.getElementById('cajaEvaluacion').style.display = 'none';
+
+    document.getElementById('resultado').style.display = 'block';
+
+    document.getElementById('barraProgreso').style.width = '100%';
+
+    const porcentaje = (puntuacion / preguntas.length) * 100;
+
+    let mensajeFinal = "";
+
+    if (porcentaje === 100) {
+        mensajeFinal = "¡Excelente! Dominas muy bien las partes de la computadora. 🌟";
+    } else if (porcentaje >= 70) {
+        mensajeFinal = "¡Muy bien! Tienes buenos conocimientos. Sigue aprendiendo. 💜";
+    } else if (porcentaje >= 50) {
+        mensajeFinal = "¡Buen esfuerzo! Repasa un poco más y vuelve a intentarlo. 📚";
+    } else {
+        mensajeFinal = "¡No te desanimes! Sigue estudiando y podrás mejorar. 💪";
+    }
+
+    document.getElementById('calificacion').textContent =
+        `Tu puntuación es ${puntuacion} de ${preguntas.length} (${porcentaje}%). ${mensajeFinal}`;
+
+}
+
+</script>
+
+</body>
+</html>
